@@ -16,7 +16,7 @@ android {
     compileSdkVersion 30
     defaultConfig {
         multiDexEnabled true
-        applicationId "org.pbreakers.mobile.androidtest"
+        applicationId "com.pbreakers.mobile.androidtest"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -121,16 +121,21 @@ dependencies {
 }
 
 android {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
     productFlavors {
         flavorDimensions("dim")
         free {
             dimension "dim"
-            applicationId "org.pbreakers.mobile.androidtest.free"
+            applicationId "com.pbreakers.mobile.androidtest.free"
+            buildConfigField "String", "BASE_URL", properties.getProperty("baseUrlDev")
         }
 
         paid {
             dimension "dim"
-            applicationId "org.pbreakers.mobile.androidtest.paid"
+            applicationId "com.pbreakers.mobile.androidtest.paid"
+            buildConfigField "String", "BASE_URL", properties.getProperty("baseUrlDev")
         }
     }
 }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.pbreakers.mobile.androidtest">
+    package="com.pbreakers.mobile.androidtest">
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
-        android:name=".udacity.app.App"
+        android:name="com.pbreakers.mobile.androidtest.udacity.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,7 +17,7 @@
 
         <activity
             android:launchMode="singleTop"
-            android:name=".udacity.MainActivity">
+            android:name="com.pbreakers.mobile.androidtest.udacity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
