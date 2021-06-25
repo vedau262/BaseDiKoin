@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Android Demo</string>
+
+    <!--Button-->
+    <string name="btn_ok">OK</string>
+    <string name="btn_yes">Yes</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_share">Share</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_done">Done</string>
+    <string name="btn_previous">Previous</string>
+    <string name="btn_finish">Finish</string>
+    <string name="btn_activate">Activate</string>
+    <string name="btn_login">Log in</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_sign_up">Sign up</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_sent">Send</string>
+    <string name="btn_got">Got it!</string>
+    <string name="btn_remove">Remove</string>
+    <string name="btn_resend_code">Resend Code %s</string>
+    <string name="btn_connecting">Connecting…</string>
+    <string name="btn_finding_device">Finding Device…</string>
+    <string name="btn_refresh">Refresh</string>
+    <string name="btn_try_to_connect">Try to connect</string>
+    <string name="btn_pair_now">Pair your device</string>
+    <string name="btn_get_tarted">Get Started</string>
+    <string name="btn_continue">Continue</string>
+    <string name="btn_export">Export</string>
+
+    <string name="special">Special: %s</string>
+    <string name="price">Price: %s</string>
+    <string name="lesson_one">Lesson One</string>
+    <string name="lesson_two">Lesson Two</string>
+    <string name="lesson_tree">Lesson Tree</string>
+    <string name="lesson_four">Lesson Four</string>
+    <string name="lesson_five">Lesson Five</string>
+    <string name="lesson_six">Lesson Sive</string>
+    <string name="lesson_seven">Lesson Seven</string>
+    <string name="lesson_eight">Lesson Eight</string>
+    <string name="lesson_nine">Lesson Nine</string>
+    <string name="lesson_ten">Lesson Ten</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="pref_color_key">color</string>
+    <string name="pref_color_label">Couleur</string>
+    <string name="pref_color_defaul_value">#fff</string>
+    <string name="pref_color_title">Couleur</string>
+    <string name="pref_color_summary">Selectionner la couleur de votre choix</string>
+    <string name="pref_amount_key">amount</string>
+    <string name="pref_progression">key</string>
+    <string name="pref">Big Text Sum : You can define a property in the primary constructor by prefixing a parameter</string>
+    <string name="lorme">Big Text : You can define a property in the primary constructor by prefixing a parameter with val or var. You can define a property outside the constructor by adding it to the class body</string>
+    <string-array name="pref_color_label">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+    </string-array>
+
+    <string-array name="pref_color_value">
+        <item>#FF0000</item>
+        <item>#283593</item>
+        <item>#2E7D32</item>
+    </string-array>
+
+    <string name="msg_no_network">Please connect to the internet</string>
+</resources>

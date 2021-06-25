@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Config Color-->
+    <color name="colorPrimary">#FFEB5757</color>
+    <color name="colorPrimaryDark">#A65151</color>
+    <color name="colorAccent">#FFEB5757</color>
+    <color name="lineGray">#CDD0E3</color>
+    <color name="backgroundGray">#E5E5E5</color>
+
+    <color name="login_back_color">#aeaaaaaa</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="background">#FFFFFFFF</color>
+
+
+    <color name="colorButtonMainActive">#4A1178</color>
+    <color name="colorSettingTitle">#84768E</color>
+
+    <color name="color_pink">#FFFF3297</color>
+    <color name="color_red">#FFED1C24</color>
+    <color name="color_red_blur">#55EB5757</color>
+    <color name="color_red_light">#ED1C24</color>
+    <color name="color_blue">#079BEE</color>
+    <color name="color_orange">#ED7C52</color>
+    <color name="color_purple">#7D3AD3</color>
+    <color name="color_green">#3A8F6A</color>
+    <color name="color_yellow">#EFCA6D</color>
+    <color name="color_grey_light_50">#8084768E</color>
+    <color name="color_button_pressed">#D9D9D9</color>
+    <color name="color_positive">#CC4454C9</color>
+    <color name="color_negative">#CCEB5757</color>
+
+    <color name="colorText">#9A9A9A</color>
+    <color name="color_break_line">#146C7B8A</color>
+    <color name="color_grey">#CDD0E3</color>
+    <color name="color_grey_80_percent">#CCCDD0E3</color>
+    <color name="color_grey_60_percent">#99CDD0E3</color>
+    <color name="color_grey_30_percent">#4DCDD0E3</color>
+    <color name="color_grey_10_percent">#1ACDD0E3</color>
+    <color name="color_hint">#661D1F21</color>
+    <color name="color_gray">#868686</color>
+    <color name="color_gray_100">#F8F8F8</color>
+    <color name="color_gray_300">#D4D4D4</color>
+    <color name="color_gray_500">#6E6D71</color>
+    <color name="color_gray_505">#505050</color>
+    <color name="color_gray_eee">#EEEEEE</color>
+    <color name="color_text_default">#040404</color>
+</resources>
