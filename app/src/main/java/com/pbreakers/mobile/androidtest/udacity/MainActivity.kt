@@ -12,6 +12,11 @@ import com.pbreakers.mobile.androidtest.udacity.data.preference.ConfigurationPre
 import com.pbreakers.mobile.androidtest.udacity.data.preference.IConfigurationPrefs
 import com.pbreakers.mobile.androidtest.udacity.utils.LoadingState
 import com.pbreakers.mobile.androidtest.udacity.viewmodel.UserViewModel
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.koin.core.context.GlobalContext
 
 
 class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
@@ -40,6 +45,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
                 LoadingState.Status.SUCCESS -> Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
             }
         })
+
+        GlobalScope.launch(Dispatchers.Default){
+            println("A context with name: ${coroutineContext + CoroutineName("test")}")
+        }
+
+
+
     }
 
     override fun getLayoutRes(): Int  = R.layout.activity_main

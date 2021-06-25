@@ -11,6 +11,8 @@ import com.pbreakers.mobile.androidtest.udacity.app.base.viewmodel.BaseViewModel
 import com.pbreakers.mobile.androidtest.udacity.data.preference.IConfigurationPrefs
 import com.pbreakers.mobile.androidtest.udacity.model.repository.UserRepository
 import com.pbreakers.mobile.androidtest.udacity.utils.LoadingState
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class UserViewModel(private val userRepository: UserRepository,
                     private val prefs : IConfigurationPrefs
@@ -28,11 +30,12 @@ class UserViewModel(private val userRepository: UserRepository,
 
     private fun fetchData() {
         prefs.language = "xxxxxxxxxxxxxxxxxx"
-        viewModelScope.launch {
+        val job = viewModelScope.launch(Dispatchers.Main) {
             try {
                 _loadingState.value = LoadingState.LOADING
                 userRepository.refresh()
                 _loadingState.value = LoadingState.LOADED
+
             } catch (e: Exception) {
                 _loadingState.value = LoadingState.error(e.message)
             }
