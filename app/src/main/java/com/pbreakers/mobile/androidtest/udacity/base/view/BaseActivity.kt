@@ -11,10 +11,12 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
@@ -28,10 +30,12 @@ import com.pbreakers.mobile.androidtest.R
 import com.pbreakers.mobile.androidtest.udacity.app.base.viewmodel.BaseViewModel
 import com.pbreakers.mobile.androidtest.udacity.app.model.error.CommonError
 import com.pbreakers.mobile.androidtest.udacity.app.model.error.ErrorMessage
+import com.pbreakers.mobile.androidtest.udacity.base.utils.Utils
 import com.pbreakers.mobile.androidtest.udacity.customize.dialog.ErrorDialog
 import com.pbreakers.mobile.androidtest.udacity.customize.dialog.LoadingProgress
 import com.pbreakers.mobile.androidtest.udacity.data.preference.IConfigurationPrefs
 import com.pbreakers.mobile.androidtest.udacity.extension.getDefault
+import com.pbreakers.mobile.androidtest.udacity.utils.LoadingState
 import javax.inject.Inject
 
 abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatActivity(),
@@ -118,19 +122,39 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
     override fun initViewModel() {
         mViewModel.apply {
             lifecycle.addObserver(this as LifecycleObserver)
-            errorObs.observe(this@BaseActivity, Observer {
+            loadingState.observe(this@BaseActivity, Observer {
+                when (it.status) {
+                    LoadingState.Status.FAILED -> {
+                        dismissLoadingDialog()
+                        handleError(it.errorMessage)
+                        resetErrorMessage()
+//                        Toast.makeText(baseContext, it.msg, Toast.LENGTH_SHORT).show()
+                    }
+                    LoadingState.Status.RUNNING -> {
+                        showLoadingDialog()
+//                        Toast.makeText(baseContext, "Loading", Toast.LENGTH_SHORT).show()
+                    }
+                    LoadingState.Status.SUCCESS -> {
+                        dismissLoadingDialog()
+//                        Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+
+            /*errorObs.observe(this@BaseActivity, Observer {
                 it.message?.apply {
                     handleError(it)
                     resetErrorMessage()
                 }
             })
+
             isLoadingObs.observe(this@BaseActivity, Observer {
-            if (it) {
-                showLoadingDialog()
-            } else {
-                dismissLoadingDialog()
-            }
-        })
+                if (it) {
+                    showLoadingDialog()
+                } else {
+                    dismissLoadingDialog()
+                }
+            })*/
         }
     }
 
@@ -166,6 +190,7 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
 
     override fun handleError(errorMessage: ErrorMessage?) {
         errorMessage?.let {
+            Log.d("handleError","it.message: ${it.message}")
             if (!it.message.isNullOrEmpty()) {
                 when (it.error) {
                     CommonError.UNKNOWN -> errorMessage.message = it.message
@@ -253,7 +278,7 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
 
     override fun onBackPressed() {
         super.onBackPressed()
-//        Utils.hideSoftKeyboard(this)
+        Utils.hideSoftKeyboard(this)
     }
 
     private var isClick: Boolean = false

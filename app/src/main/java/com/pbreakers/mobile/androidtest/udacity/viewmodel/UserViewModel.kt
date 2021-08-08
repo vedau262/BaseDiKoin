@@ -21,10 +21,6 @@ class UserViewModel(private val userRepository: UserRepository,
                     private val dao: UserDao
 ) : BaseViewModel() {
 
-    private val _loadingState = MutableLiveData<LoadingState>()
-    val loadingState: LiveData<LoadingState>
-        get() = _loadingState
-
     val _data = MutableLiveData<List<GithubUser>>()
     val data : LiveData<List<GithubUser>>
         get() {
@@ -37,19 +33,19 @@ class UserViewModel(private val userRepository: UserRepository,
 
     private fun fetchData() {
         prefs.language = "xxxxxxxxxxxxxxxxxx"
-        setLoading(true)
+//        setLoading(true)
         val job = viewModelScope.launch(Dispatchers.Main) {
             try {
-                _loadingState.value = LoadingState.LOADING
+                setLoadingState(LoadingState.LOADING)
                 val userList  = userRepository.refresh()
 //                dao.add(userList)
-                _loadingState.value = LoadingState.LOADED
+                setLoadingState(LoadingState.LOADED)
                 _data.postValue(userList)
-                setLoading(false)
+//                setLoading(false)
 
             } catch (e: Exception) {
-                _loadingState.value = LoadingState.error(e.message)
-                setErrorMessage(message =  e.message)
+                setLoadingState(LoadingState.error(message = e.message))
+                onApiError(e.message)
             }
         }
     }

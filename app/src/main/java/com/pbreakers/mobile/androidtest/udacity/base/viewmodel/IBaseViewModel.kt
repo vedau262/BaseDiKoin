@@ -1,14 +1,18 @@
 package com.pbreakers.mobile.androidtest.udacity.app.base.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.pbreakers.mobile.androidtest.udacity.app.model.error.ErrorMessage
+import com.pbreakers.mobile.androidtest.udacity.utils.LoadingState
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.Disposable
 
 interface IBaseViewModel {
+    val loadingState: LiveData<LoadingState>
     val isLoadingObs: LiveData<Boolean>
     val errorObs: LiveData<ErrorMessage>
 
+    fun setLoadingState(loadingState: LoadingState)
     fun setLoading(boolean: Boolean)
     fun setErrorMessage(t: Throwable? = null, message: String? = null)
     fun resetErrorMessage()

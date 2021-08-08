@@ -1,8 +1,10 @@
 package com.pbreakers.mobile.androidtest.udacity.app.base.viewmodel
 
 //import com.google.firebase.iid.FirebaseInstanceId
+import android.util.Log
 import androidx.lifecycle.*
 import com.pbreakers.mobile.androidtest.udacity.app.model.error.ErrorMessage
+import com.pbreakers.mobile.androidtest.udacity.utils.LoadingState
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 
@@ -14,6 +16,10 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel,
 
     private var currentDisposable: Disposable? = null
 
+    private val _loadingState = MutableLiveData<LoadingState>()
+    override val loadingState: LiveData<LoadingState>
+        get() = _loadingState
+
     private val _isLoadingObs = MutableLiveData<Boolean>()
     override val isLoadingObs: LiveData<Boolean>
         get() = _isLoadingObs
@@ -23,6 +29,10 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel,
         get() = _errorObs
 
     protected var isUserVisible: Boolean = false
+
+    override fun setLoadingState(loadingState: LoadingState) {
+        _loadingState.postValue(loadingState)
+    }
 
     override fun setLoading(boolean: Boolean) {
         _isLoadingObs.postValue(boolean)
@@ -84,10 +94,13 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel,
     open fun onApiError(t: Throwable) {
         setLoading(false)
         setErrorMessage(t)
+        setLoadingState(LoadingState.error(throwable=t))
     }
 
     open fun onApiError(message: String?) {
         setLoading(false)
         setErrorMessage(message = message)
+        Log.d("onApiError", "message: $message")
+        setLoadingState(LoadingState.error(message= message))
     }
 }
