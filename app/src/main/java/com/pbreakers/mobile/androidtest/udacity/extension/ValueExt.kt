@@ -7,11 +7,6 @@ import java.util.*
 import kotlin.math.abs
 import kotlin.math.pow
 
-
-/**
- * Created by Nhat.vo on 8/16/20.
- */
-
 fun String?.getDefault(): String {
     return this ?: ""
 }

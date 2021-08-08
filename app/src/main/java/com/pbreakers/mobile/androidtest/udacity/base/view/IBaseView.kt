@@ -5,10 +5,9 @@ import android.content.Context
 import android.view.View
 import androidx.annotation.LayoutRes
 import com.pbreakers.mobile.androidtest.udacity.app.base.viewmodel.BaseViewModel
+import com.pbreakers.mobile.androidtest.udacity.app.model.error.ErrorMessage
+import com.pbreakers.mobile.androidtest.udacity.data.preference.IConfigurationPrefs
 
-/**
- * Created by Nhat Vo on 17/11/2020.
- */
 interface IBaseView<T : BaseViewModel> {
     /**
      * Define the layout res id can be used to [Activity.setContentView]
@@ -27,12 +26,12 @@ interface IBaseView<T : BaseViewModel> {
     fun initViewModel()
     fun showLoadingDialog()
     fun dismissLoadingDialog()
-//    fun handleError(errorMessage: ErrorMessage?)
+    fun handleError(errorMessage: ErrorMessage?)
     fun onHandleBackPressed()
     fun getToolbarTitle(): String?
     fun onEditTextChangedCallback(view: View, value: String?)
 //    fun getCurrentFragment(id: Int): BaseFragment<*, *>?
 //    fun getFragments(id: Int): MutableList<Fragment>?
-//    val configPrefs: IConfigurationPrefs
+    val configPrefs: IConfigurationPrefs
     val viewContext: Context
 }

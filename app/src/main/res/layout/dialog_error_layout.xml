@@ -13,6 +13,9 @@
             name="buttonText"
             type="String" />
 
+        <variable
+            name="listener"
+            type="com.pbreakers.mobile.androidtest.udacity.customize.dialog.IErrorDialogView" />
 
     </data>
 

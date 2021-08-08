@@ -8,9 +8,6 @@ import com.pbreakers.mobile.androidtest.udacity.extension.getDefault
 
 import javax.inject.Inject
 
-/*
-*Created by Nhat.vo on 8/22/2019.
-*/
 class ConfigurationPrefs @Inject constructor(
     private val context: Context
 ) : IConfigurationPrefs {

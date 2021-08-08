@@ -20,16 +20,20 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.pbreakers.mobile.androidtest.R
 import com.pbreakers.mobile.androidtest.udacity.app.base.viewmodel.BaseViewModel
+import com.pbreakers.mobile.androidtest.udacity.app.model.error.CommonError
+import com.pbreakers.mobile.androidtest.udacity.app.model.error.ErrorMessage
+import com.pbreakers.mobile.androidtest.udacity.customize.dialog.ErrorDialog
+import com.pbreakers.mobile.androidtest.udacity.customize.dialog.LoadingProgress
+import com.pbreakers.mobile.androidtest.udacity.data.preference.IConfigurationPrefs
+import com.pbreakers.mobile.androidtest.udacity.extension.getDefault
 import javax.inject.Inject
 
-
-/**
- * Created by Nhat.vo on 16/11/2020.
- */
 abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatActivity(),
     IBaseActivity<T> {
 
@@ -38,11 +42,11 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
 
 
 
-//    @Inject
-//    lateinit var prefs: IConfigurationPrefs
+    @Inject
+    lateinit var prefs: IConfigurationPrefs
 
-//    override val configPrefs: IConfigurationPrefs
-//        get() = prefs
+    override val configPrefs: IConfigurationPrefs
+        get() = prefs
 
     override val viewContext: Context
         get() = this
@@ -51,8 +55,8 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
         return mViewModel
     }
 
-//    private var loadingProgress: LoadingProgress? = null
-//    private var errorDialog: ErrorDialog? = null
+    private var loadingProgress: LoadingProgress? = null
+    private var errorDialog: ErrorDialog? = null
     private var handelClickBack: HandelClickBack? = null
 
     protected lateinit var dataBinding: V
@@ -108,25 +112,25 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
      */
     @SuppressLint("SetTextI18n")
     override fun initView() {
-//        loadingProgress = LoadingProgress(this)
+        loadingProgress = LoadingProgress(this)
     }
 
     override fun initViewModel() {
         mViewModel.apply {
             lifecycle.addObserver(this as LifecycleObserver)
-           /* errorObs.observe(this@BaseActivity, Observer {
+            errorObs.observe(this@BaseActivity, Observer {
                 it.message?.apply {
                     handleError(it)
                     resetErrorMessage()
                 }
-            })*/
-           /* isLoadingObs.observe(this@BaseActivity, Observer {
-                if (it) {
-                    showLoadingDialog()
-                } else {
-                    dismissLoadingDialog()
-                }
-            })*/
+            })
+            isLoadingObs.observe(this@BaseActivity, Observer {
+            if (it) {
+                showLoadingDialog()
+            } else {
+                dismissLoadingDialog()
+            }
+        })
         }
     }
 
@@ -139,28 +143,28 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
     override fun onEditTextChangedCallback(view: View, value: String?) {}
 
     override fun showLoadingDialog() {
-       /* if (loadingProgress == null) {
+        if (loadingProgress == null) {
             loadingProgress = LoadingProgress(this)
         }
         loadingProgress?.let {
             if (!it.isShowing) {
                 it.show()
             }
-        }*/
+        }
     }
 
     override fun dismissLoadingDialog() {
-        /*try {
+        try {
             loadingProgress?.let {
                 it.dismiss()
                 loadingProgress = null
             }
         } catch (e: Exception) {
             e.printStackTrace()
-        }*/
+        }
     }
 
-    /*override fun handleError(errorMessage: ErrorMessage?) {
+    override fun handleError(errorMessage: ErrorMessage?) {
         errorMessage?.let {
             if (!it.message.isNullOrEmpty()) {
                 when (it.error) {
@@ -176,13 +180,13 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
                 onShowErrorDialog(errorMessage.message.getDefault())
             }
         }
-    }*/
+    }
 
     /**
      * Show error dialog message*/
 
     override fun onShowErrorDialog(message: String) {
-       /* if (errorDialog == null) {
+        if (errorDialog == null) {
             errorDialog = ErrorDialog(viewContext, message)
         }
 
@@ -191,7 +195,7 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
             if (!isShowing) {
                 show()
             }
-        }*/
+        }
     }
 
     /*override fun getCurrentFragment(id: Int): BaseFragment<*, *>? {
@@ -237,11 +241,11 @@ abstract class BaseActivity<V : ViewDataBinding, T : BaseViewModel> :AppCompatAc
     override fun onDestroy() {
         super.onDestroy()
         try {
-            /*loadingProgress?.let {
+            loadingProgress?.let {
                 if (it.isShowing) {
                     it.dismiss()
                 }
-            }*/
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }

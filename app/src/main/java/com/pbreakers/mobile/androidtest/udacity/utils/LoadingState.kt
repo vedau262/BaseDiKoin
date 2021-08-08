@@ -1,7 +1,5 @@
 package com.pbreakers.mobile.androidtest.udacity.utils
 
-
-
 @Suppress("DataClassPrivateConstructor")
 data class LoadingState private constructor(val status: Status, val msg: String? = null) {
     companion object {

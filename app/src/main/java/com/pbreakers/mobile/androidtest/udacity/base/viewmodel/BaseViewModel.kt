@@ -2,12 +2,10 @@ package com.pbreakers.mobile.androidtest.udacity.app.base.viewmodel
 
 //import com.google.firebase.iid.FirebaseInstanceId
 import androidx.lifecycle.*
+import com.pbreakers.mobile.androidtest.udacity.app.model.error.ErrorMessage
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 
-/**
- * Created by Nhat.vo on 16/11/2020.
- */
 
 abstract class BaseViewModel : ViewModel(), IBaseViewModel,
     LifecycleObserver {
@@ -20,9 +18,9 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel,
     override val isLoadingObs: LiveData<Boolean>
         get() = _isLoadingObs
 
-    /*private val _errorObs = MutableLiveData<ErrorMessage>()
+    private val _errorObs = MutableLiveData<ErrorMessage>()
     override val errorObs: LiveData<ErrorMessage>
-        get() = _errorObs*/
+        get() = _errorObs
 
     protected var isUserVisible: Boolean = false
 
@@ -31,11 +29,11 @@ abstract class BaseViewModel : ViewModel(), IBaseViewModel,
     }
 
     override fun setErrorMessage(t: Throwable?, message: String?) {
-//        _errorObs.postValue(ErrorMessage(t, message))
+        _errorObs.postValue(ErrorMessage(t, message))
     }
 
     override fun resetErrorMessage() {
-//        _errorObs.postValue(ErrorMessage())
+        _errorObs.postValue(ErrorMessage())
     }
 
     override fun addDisposable(disposable: Disposable, isSaveDisposable: Boolean) {

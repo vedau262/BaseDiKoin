@@ -6,10 +6,6 @@ import com.pbreakers.mobile.androidtest.R
 import com.pbreakers.mobile.androidtest.udacity.app.base.viewmodel.BaseViewModel
 import com.pbreakers.mobile.androidtest.udacity.base.view.IBaseView
 
-
-/**
- * Created by Nhat Vo on 17/11/2020.
- */
 interface IBaseActivity<T : BaseViewModel> : IBaseView<T> {
     fun onChangeStatusBarColor()
     fun onFullScreen()
