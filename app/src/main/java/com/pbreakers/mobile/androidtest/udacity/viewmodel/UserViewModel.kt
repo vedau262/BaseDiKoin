@@ -43,12 +43,13 @@ class UserViewModel(private val userRepository: UserRepository,
                 _loadingState.value = LoadingState.LOADING
                 val userList  = userRepository.refresh()
 //                dao.add(userList)
-                _data.postValue(userList)
                 _loadingState.value = LoadingState.LOADED
+                _data.postValue(userList)
                 setLoading(false)
 
             } catch (e: Exception) {
                 _loadingState.value = LoadingState.error(e.message)
+                setErrorMessage(message =  e.message)
             }
         }
     }

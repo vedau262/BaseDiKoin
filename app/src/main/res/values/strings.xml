@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">BaseDi Koin</string>
 
+    <!--TAG-->
+    <string name="tag_tool_bar_view" translatable="false">TOOLBAR</string>
+    <string name="tag_line_dialog" translatable="false">v_line</string>
+    <string name="tag_root_view" translatable="false">root_view</string>
+    <string name="tag_close_img" translatable="false">tag_close_img</string>
+    <string name="tag_form_container" translatable="false">tag_form_container</string>
+    <string name="tag_space_view" translatable="false">tag_space_view</string>
+    <string name="tag_scroll_view" translatable="false">tag_scroll_view</string>
+
     <!--Button-->
     <string name="btn_ok">OK</string>
     <string name="btn_yes">Yes</string>

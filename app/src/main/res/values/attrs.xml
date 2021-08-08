@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ShapeRoundView">
+        <attr name="shape_round_radius" format="dimension" />
+        <attr name="shape_round_border_color" format="color" />
+        <attr name="shape_round_border_width" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="SliderViewPager">
+        <attr name="bvp_interval" format="integer" />
+        <attr name="bvp_scroll_duration" format="integer" />
+        <attr name="bvp_can_loop" format="boolean" />
+        <attr name="bvp_auto_play" format="boolean" />
+        <attr name="bvp_indicator_checked_color" format="color" />
+        <attr name="bvp_indicator_normal_color" format="color" />
+        <attr name="bvp_indicator_radius" format="dimension" />
+        <attr name="bvp_round_corner" format="dimension" />
+        <attr name="bvp_page_margin" format="dimension" />
+        <attr name="bvp_reveal_width" format="dimension" />
+        <attr name="bvp_page_style" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="multi_page" value="2" />
+            <enum name="multi_page_overlap" value="4" />
+            <enum name="multi_page_scale" value="8" />
+        </attr>
+    </declare-styleable>
+</resources>

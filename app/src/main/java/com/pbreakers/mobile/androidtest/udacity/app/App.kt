@@ -10,6 +10,11 @@ import org.koin.core.logger.Level
 import com.pbreakers.mobile.androidtest.udacity.app.di.*
 
 class App : Application() {
+    init {
+        instance = this
+    }
+
+
     override fun onCreate() {
         super.onCreate()
         startKoin {
@@ -22,5 +27,9 @@ class App : Application() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         MultiDex.install(this)
+    }
+
+    companion object {
+        lateinit var instance: App
     }
 }

@@ -38,13 +38,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserViewModel>() {
             }
         })
 
-        mViewModel.loadingState.observe(this, Observer {
+       /* mViewModel.loadingState.observe(this, Observer {
             when (it.status) {
                 LoadingState.Status.FAILED -> Toast.makeText(baseContext, it.msg, Toast.LENGTH_SHORT).show()
                 LoadingState.Status.RUNNING -> Toast.makeText(baseContext, "Loading", Toast.LENGTH_SHORT).show()
                 LoadingState.Status.SUCCESS -> Toast.makeText(baseContext, "Success", Toast.LENGTH_SHORT).show()
             }
-        })
+        })*/
 
         GlobalScope.launch(Dispatchers.Default){
             println("A context with name: ${coroutineContext + CoroutineName("test")}")
